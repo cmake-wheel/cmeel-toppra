@@ -1,0 +1,38 @@
+[build-system]
+build-backend = "cmeel"
+requires = [
+  "cmeel[build]",
+  "cmeel-boost[build] ~= 1.90.0",
+  "cmeel-glpk[build]",
+  "cmeel-qpoases[build]",
+  "pin[build]",
+  "pybind11"
+]
+
+[project]
+dependencies = [
+  "cmeel-boost ~= 1.90.0",
+  "cmeel-glpk",
+  "cmeel-qpoases",
+  "pin"
+]
+description = "Time-Optimal Path Parameterization"
+license = "MIT"
+name = "cmeel-toppra"
+version = "0.6.8"
+
+[project.urls]
+homepage = "https://github.com/cmake-wheel/cmeel-toppra"
+upstream = "https://github.com/hungpham2511/toppra"
+
+[tool.cmeel]
+configure-args = [
+  "BUILD_WITH_PINOCCHIO=ON",
+  "BUILD_WITH_PINOCCHIO_PYTHON=ON",
+  "BUILD_WITH_qpOASES=ON",
+  "BUILD_WITH_GLPK=ON"
+]
+source = "toppra/cpp"
+
+[tool.tomlsort]
+all = true

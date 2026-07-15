@@ -1,0 +1,17 @@
+--- toppra/cpp/bindings/CMakeLists.txt.orig	2026-07-15 17:05:04.549124134 +0200
++++ toppra/cpp/bindings/CMakeLists.txt	2026-07-15 17:17:00.090413456 +0200
+@@ -12,7 +12,13 @@
+   message(STATUS "Installing Python bindings to ${TOPPRA_PYTHON_SOURCE_DIR}")
+ 
+   # Build bindings ###################################################
+-  find_package(Python COMPONENTS Interpreter Development)
++  find_package(Python COMPONENTS Interpreter Development.Module)
++  execute_process(
++    COMMAND "${Python_EXECUTABLE}" "-m" "pybind11" "--cmakedir"
++    OUTPUT_VARIABLE _pybind11_cmake
++    OUTPUT_STRIP_TRAILING_WHITESPACE
++  )
++  set(pybind11_ROOT "${_pybind11_cmake}/../../..")
+   find_package(pybind11 REQUIRED)
+   ## Ref: https://pybind11.readthedocs.io/en/stable/cmake/index.html
+   message(STATUS "Found ${PYTHON_INCLUDE_DIR} ${PYTHON_EXECUTABLE}")
