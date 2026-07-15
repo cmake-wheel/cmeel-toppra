@@ -1,10 +1,10 @@
 [build-system]
 build-backend = "cmeel"
 requires = [
-  "cmeel[build]",
   "cmeel-boost[build] ~= 1.90.0",
   "cmeel-glpk[build]",
   "cmeel-qpoases[build]",
+  "cmeel[build]",
   "pin[build]",
   "pybind11"
 ]
@@ -27,10 +27,10 @@ upstream = "https://github.com/hungpham2511/toppra"
 
 [tool.cmeel]
 configure-args = [
+  "BUILD_WITH_GLPK=ON",
   "BUILD_WITH_PINOCCHIO=ON",
   "BUILD_WITH_PINOCCHIO_PYTHON=ON",
-  "BUILD_WITH_qpOASES=ON",
-  "BUILD_WITH_GLPK=ON"
+  "BUILD_WITH_qpOASES=ON"
 ]
 source = "toppra/cpp"
 
